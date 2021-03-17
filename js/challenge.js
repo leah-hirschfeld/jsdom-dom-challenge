@@ -23,7 +23,7 @@ function automaticallyIncrement() {
     }, 1000)
 }
 
-automaticallyIncrement()
+//automaticallyIncrement()
 
 function manuallyIncrement() {
     const plusButton = document.getElementById("+");
@@ -35,8 +35,8 @@ const minusButton = document.getElementById("-");
     plusButton.addEventListener('click', decrementTime);
 }
 
-manuallyIncrement()
-manuallyDecrement()
+//manuallyIncrement()
+//manuallyDecrement()
 
 function heartButtonClick() {
     const heartButton = document.getElementById("<3");
@@ -48,9 +48,25 @@ function likeNumber() {
     const number = timer.innerText;
     if (likeTracker[number]) {
         likeTracker[number] += 1;
+        // update li - select and udpate
     } else {
         likeTracker[number] = 1;
+        // create li
+        var cont = document.getElementsByClassName("likes");
+        var li = document.createElement('li');
+        li.innerHTML = likeTracker[number] = 1;
+        ul.appendChild(li);
+        cont.appendChild(ul); 
     }
-    // add string to put out the likeTracker number and likes in the likes container in ul class
-    // add LI elements for that container
+}
+
+function leaveAComment() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const commentForm = document.getElementById('comment-form')
+        commentForm.addEventListener('submit', function(event) {
+          event.preventDefault() //stop form from POSTING
+          const userInputField = event.target.querySelector('#new-comment')
+          const userInputString = userInputField.value
+        })
+      })
 }
